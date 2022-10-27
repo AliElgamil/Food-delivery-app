@@ -1,0 +1,133 @@
+.cart_container {
+  inset: 0;
+  background-color: rgb(0 0 0 / 64%);
+  z-index: 999999;
+}
+
+.cart {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 400px;
+  height: 100%;
+  background-color: #fff;
+  transform: translateX(100%);
+  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.cart.show_cart {
+  transform: translateX(0);
+}
+
+.cart_item-info .image {
+  width: 35px;
+  height: 35px;
+}
+
+.cart_product-name {
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.cart_product-price {
+  font-size: 0.8rem;
+}
+
+.cart_product-price span:last-child {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--main-color);
+}
+
+.inc_dec-btn {
+  background-color: var(--secondary-color);
+  padding: 2px 5px;
+  border-radius: 5px;
+  width: fit-content;
+}
+
+.inc-btn,
+.dec-btn {
+  cursor: pointer;
+  width: fit-content;
+}
+
+.delete_btn {
+  all: unset;
+  font-size: 1.1rem;
+  font-weight: 500;
+  background-color: var(--main-color);
+  color: #fff;
+  padding: 0 5px;
+  border-radius: 5px;
+  transition: opacity 0.3s linear;
+  display: flex;
+  align-items: center;
+}
+
+.delete_btn:hover {
+  opacity: 0.9;
+}
+
+.cart_item {
+  padding: 10px;
+  border: 0 !important;
+  border-bottom: 1px solid var(--secondary-color) !important;
+}
+
+.cart_close {
+  width: 100%;
+  height: 50px;
+  padding: 10px 15px;
+}
+
+.cart_close span i {
+  font-size: 1.1rem;
+  background-color: var(--text-color);
+  padding: 5px;
+  border-radius: 50%;
+  color: #fff;
+  cursor: pointer;
+}
+
+.cart_item-list {
+  height: calc(100% - 130px);
+  overflow-y: auto;
+}
+
+.cart_bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 10px;
+  height: 80px;
+  background-color: var(--main-color);
+  color: #fff;
+}
+
+.cart_bottom h6 {
+  font-size: 1.3rem;
+}
+
+.cart_bottom button {
+  border: 0;
+  padding: 4px 20px;
+  border-radius: 5px;
+  background-color: #fff;
+  color: var(--text-color);
+  font-weight: 600;
+}
+
+.cart_bottom button.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.cart_bottom button.disabled a {
+  pointer-events: none;
+}
+
+.no_cart-item p {
+  font-size: 1.3rem;
+  color: var(--gray-color);
+}

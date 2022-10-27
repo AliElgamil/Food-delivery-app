@@ -1,0 +1,36 @@
+.slider .item {
+  padding-inline: 1rem;
+}
+
+.reviews_text {
+  color: #fff;
+  line-height: 30px;
+  margin: 40px 0 20px;
+  background-color: var(--main-color);
+  padding: 10px 15px;
+  position: relative;
+}
+
+.reviews_text::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  transform: translateX(30px) translateY(100%);
+  border-color: var(--main-color) transparent transparent transparent;
+  border-style: solid;
+  border-width: 15px 15px 15px 0;
+}
+
+.slider_content .slider_image img {
+  width: 70px;
+  height: 70px;
+}
+
+.slick-dots li:hover button:before {
+  color: var(--main-color);
+}
+
+.slick-dots li.slick-active button:before {
+  color: var(--main-color);
+}

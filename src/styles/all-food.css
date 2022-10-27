@@ -1,0 +1,24 @@
+.search_widget {
+  display: grid;
+  grid-template-columns: minmax(0, 300px) auto;
+  align-items: center;
+  padding: 7px 15px;
+  border: 1px solid var(--secondary-color);
+  max-width: 350px;
+}
+
+.sort_widget select {
+  padding: 7px 15px;
+  border: 1px solid var(--secondary-color);
+  width: 100%;
+  max-width: 300px;
+  outline: 0;
+}
+
+.search_widget input {
+  all: unset;
+}
+
+.search_widget input::placeholder {
+  color: var(--gray-color);
+}

@@ -1,0 +1,23 @@
+.pagination_numbers {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.pagination_numbers li {
+  padding: 5px 10px;
+  color: #fff;
+  background-color: var(--main-color);
+  border-radius: 0.3rem;
+  cursor: pointer;
+  border: 2px solid var(--main-color);
+}
+
+.pagination_numbers li.active {
+  background-color: transparent;
+  color: var(--main-color);
+}
+
+.pagination_numbers li.hide_btn {
+  visibility: hidden;
+}

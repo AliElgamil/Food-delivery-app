@@ -1,0 +1,101 @@
+/* google fonts */
+
+@import url("https://fonts.googleapis.com/css2?family=RocknRoll+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Istok+Web&display=swap");
+
+:root {
+  --text-color: #212245;
+  --main-color: #df2020;
+  --secondary-color: #fde4e4;
+  --gray-color: #777;
+  --white-color: #fcfcfc;
+}
+
+/* reset default style */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+*::-webkit-scrollbar {
+  background-color: transparent;
+  width: 10px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--main-color);
+  width: 10px;
+}
+
+/* base style */
+
+body {
+  background: #fcfcfc;
+  font-family: "Istok Web", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "RocknRoll One", sans-serif !important;
+}
+
+a,
+a:hover {
+  text-decoration: none;
+  color: unset;
+  color: inherit;
+}
+
+h1,
+h2 {
+  font-size: 2.1rem;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+section {
+  padding: 60px 0px;
+}
+
+/* animations  */
+@keyframes move-x {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  50% {
+    transform: translateX(5px);
+  }
+}
+
+@keyframes move-up-down {
+  0% {
+    top: -150%;
+  }
+
+  50% {
+    top: 3px;
+  }
+
+  100% {
+    top: 0;
+  }
+}
+
+@keyframes loading {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+/* animations  */
