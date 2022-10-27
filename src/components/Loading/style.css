@@ -23,7 +23,7 @@
   visibility: hidden;
 }
 
-.loading + * {
+.loading:not(.loading_hidden) + * {
   position: relative;
   z-index: 1;
 }

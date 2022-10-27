@@ -34,6 +34,19 @@ export default function AllFoodsLayout() {
             <Sort />
           </Col>
         </Row>
+        {/* searchProducts || products */}
+        {/* [
+            ...products,
+            ...products,
+            ...products,
+            ...products,
+            ...products,
+            ...products,
+            ...products,
+            ...products,
+            ...products,
+            ...products,
+          ] */}
         <Pagination
           items={searchProducts || products}
           pageNumber={pageNumber}

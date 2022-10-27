@@ -5,6 +5,7 @@ import ProductCards from "../Ui/ProductCards/ProductCards";
 import "./style.css";
 
 export default function Pagination({ items, pageNumber, setPageNumber }) {
+  const pagCount = 4;
   const sliceFoodCard = (data) => {
     const pageView = 8;
     const items = [...data];
@@ -21,6 +22,16 @@ export default function Pagination({ items, pageNumber, setPageNumber }) {
   const nextPage = () => setPageNumber(pageNumber + 1);
   const prePage = () => setPageNumber(pageNumber - 1);
   const pageNumberHandler = (pageNumber) => setPageNumber(pageNumber);
+
+  const start = (number) => {
+    if (number - pagCount >= pageNumber) return pageNumber - pagCount;
+    return number - pagCount;
+  };
+
+  const end = (number) => {
+    if (number - pagCount >= pageNumber) return pageNumber + pagCount;
+    return number + pagCount;
+  };
   return (
     <div className="products_section">
       <Row>

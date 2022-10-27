@@ -54,7 +54,10 @@ export default function Carts() {
           <h6>
             <span>${totalPrice}</span>
           </h6>
-          <button className={!cartItems.length ? "disabled" : ""}>
+          <button
+            className={!cartItems.length ? "disabled" : ""}
+            onClick={toggleCartVisibleHandler}
+          >
             <Link to="/checkout">Checkout</Link>
           </button>
         </div>
