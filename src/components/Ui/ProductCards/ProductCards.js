@@ -21,20 +21,21 @@ export default function ProductCards({ item }) {
     );
   return (
     <div className="product_item text-center">
-      <div className={`product_img ${loadingImage ? "loading" : ""}`}>
-        <LazyLoadImage
-          alt={item.category}
-          src={item.image01}
-          afterLoad={() => setLoadingImage(false)}
-          effect="blur"
-          className="img-fluid  mb-4"
-        />
-      </div>
-
+      <h5 className="product_name mb-5">
+        <Link to={`/all-foods/${item.id}`}>
+          <div className={`product_img ${loadingImage ? "loading" : ""}`}>
+            <LazyLoadImage
+              alt={item.category}
+              src={item.image01}
+              afterLoad={() => setLoadingImage(false)}
+              effect="blur"
+              className="img-fluid  mb-4"
+            />
+          </div>
+          {item.title}
+        </Link>
+      </h5>
       <div className="product_content">
-        <h5 className="product_name mb-5">
-          <Link to={`/foods/${item.id}`}>{item.title}</Link>
-        </h5>
         <div className="d-flex align-items-center justify-content-between">
           <span className="product_price">${item.price}</span>
           <button className="add-to-cart rounded-3" onClick={addItemToCart}>

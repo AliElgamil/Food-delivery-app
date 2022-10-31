@@ -57,7 +57,7 @@
   flex-grow: 1;
 }
 
-.product_content a {
+.product_name a {
   color: var(--text-color);
   font-size: 1rem;
 }

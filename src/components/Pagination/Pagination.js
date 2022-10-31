@@ -1,11 +1,9 @@
 import React from "react";
-import { useEffect } from "react";
 import { Col, Row } from "reactstrap";
 import ProductCards from "../Ui/ProductCards/ProductCards";
 import "./style.css";
 
 export default function Pagination({ items, pageNumber, setPageNumber }) {
-  const pagCount = 4;
   const sliceFoodCard = (data) => {
     const pageView = 8;
     const items = [...data];
@@ -23,15 +21,19 @@ export default function Pagination({ items, pageNumber, setPageNumber }) {
   const prePage = () => setPageNumber(pageNumber - 1);
   const pageNumberHandler = (pageNumber) => setPageNumber(pageNumber);
 
-  const start = (number) => {
-    if (number - pagCount >= pageNumber) return pageNumber - pagCount;
-    return number - pagCount;
+  const start = () => {
+    const startNumber = pageNumber - 1;
+    if (pageNumber === 1) return 1;
+    else if (pageNumber === products.length) return startNumber - 1;
+    return startNumber;
   };
 
-  const end = (number) => {
-    if (number - pagCount >= pageNumber) return pageNumber + pagCount;
-    return number + pagCount;
+  const end = () => {
+    const endNumber = pageNumber + 1;
+    if (pageNumber - 1 === 0) return pageNumber + 2;
+    return endNumber;
   };
+
   return (
     <div className="products_section">
       <Row>
@@ -65,26 +67,31 @@ export default function Pagination({ items, pageNumber, setPageNumber }) {
               ) : (
                 <li onClick={nextPage}>next</li>
               )}
-              {products.map((_, ind) =>
-                pageNumber === ind + 1 ? (
-                  <li
-                    key={ind}
-                    onClick={() => pageNumberHandler(ind + 1)}
-                    className="active"
-                  >
-                    {ind + 1}
-                  </li>
-                ) : (
-                  <li key={ind} onClick={() => pageNumberHandler(ind + 1)}>
-                    {ind + 1}
-                  </li>
-                )
+              {products.map(
+                (_, ind) =>
+                  ind + 1 >= start() && ind + 1 <= end() ? (
+                    pageNumber === ind + 1 ? (
+                      <li
+                        key={ind}
+                        onClick={() => pageNumberHandler(ind + 1)}
+                        className="active"
+                      >
+                        {ind + 1}
+                      </li>
+                    ) : (
+                      <li key={ind} onClick={() => pageNumberHandler(ind + 1)}>
+                        {ind + 1}
+                      </li>
+                      // PagNumbers?.map((item) => item)
+                    )
+                  ) : null
+                // null
               )}
               {pageNumber !== 1 && items.length !== 0 ? (
-                <li onClick={prePage}>previous</li>
+                <li onClick={prePage}>prev</li>
               ) : (
                 <li className="hide_btn" onClick={prePage}>
-                  previous
+                  prev
                 </li>
               )}
             </ul>

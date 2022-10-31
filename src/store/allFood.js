@@ -8,6 +8,7 @@ const initialState = {
   category: "all",
   isLoading: true,
   error: false,
+  foodDetail: [],
 };
 
 const url = "./products.json";
@@ -70,6 +71,11 @@ const sliceAllFood = createSlice({
     },
     resetSearch(state) {
       state.searchProducts = false;
+    },
+    findFood(state, action) {
+      state.foodDetail = state.allFood.filter(
+        (item) => item.id === action.payload
+      );
     },
   },
   extraReducers: {
