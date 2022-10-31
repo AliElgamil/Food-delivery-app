@@ -12,6 +12,7 @@ const SuspenseLoading = ({ children }) => (
 );
 export default function Layout() {
   const { cartVisible } = useSelector((state) => state.uiVisible);
+
   return (
     <>
       <SuspenseLoading>

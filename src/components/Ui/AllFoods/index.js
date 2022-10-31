@@ -20,8 +20,8 @@ export default function AllFoodsLayout() {
   }, [allProducts]);
 
   useEffect(() => {
-    dispatch(getAllFood());
-  }, [dispatch]);
+    !allProducts.length && dispatch(getAllFood());
+  }, [dispatch, allProducts]);
 
   return (
     <section>

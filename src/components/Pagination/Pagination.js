@@ -60,13 +60,14 @@ export default function Pagination({ items, pageNumber, setPageNumber }) {
         <Col sm="12" className="mt-5">
           {
             <ul className="pagination_numbers list-unstyled">
-              {pageNumber === products.length || !items.length ? (
-                <li className="hide_btn" onClick={nextPage}>
-                  next
-                </li>
+              {pageNumber !== 1 && items.length !== 0 ? (
+                <li onClick={prePage}>prev</li>
               ) : (
-                <li onClick={nextPage}>next</li>
+                <li className="hide_btn" onClick={prePage}>
+                  prev
+                </li>
               )}
+
               {products.map(
                 (_, ind) =>
                   ind + 1 >= start() && ind + 1 <= end() ? (
@@ -87,12 +88,12 @@ export default function Pagination({ items, pageNumber, setPageNumber }) {
                   ) : null
                 // null
               )}
-              {pageNumber !== 1 && items.length !== 0 ? (
-                <li onClick={prePage}>prev</li>
-              ) : (
-                <li className="hide_btn" onClick={prePage}>
-                  prev
+              {pageNumber === products.length || !items.length ? (
+                <li className="hide_btn" onClick={nextPage}>
+                  next
                 </li>
+              ) : (
+                <li onClick={nextPage}>next</li>
               )}
             </ul>
           }
