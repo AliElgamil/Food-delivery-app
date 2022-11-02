@@ -63,6 +63,17 @@ section {
   padding: 60px 0px;
 }
 
+.add-to-cart {
+  all: unset;
+  padding: 7px 20px;
+  background-color: var(--main-color);
+  color: #fff;
+  outline: none !important;
+}
+.add-to-cart:hover {
+  color: #fff;
+}
+
 /* animations  */
 @keyframes move-x {
   0%,

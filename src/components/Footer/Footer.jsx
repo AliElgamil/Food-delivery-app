@@ -67,7 +67,6 @@ export default function Footer() {
           </Col>
           <Col md="6">
             <div className="social_links d-flex align-items-center gap-4 justify-content-end">
-              <p className="m-0">Follow:</p>
               <span className="d-flex gap-2">
                 <Link to="/error404">
                   <i className="ri-facebook-fill"></i>

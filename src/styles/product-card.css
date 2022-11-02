@@ -11,7 +11,6 @@
 
 .product_img {
   transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  min-height: 150px;
   position: relative;
   display: flex;
   align-items: center;
@@ -66,11 +65,4 @@
   color: var(--text-color);
   font-weight: 600;
   font-size: 1.2rem;
-}
-
-.add-to-cart {
-  all: unset;
-  padding: 7px 20px;
-  background-color: var(--main-color);
-  color: #fff;
 }

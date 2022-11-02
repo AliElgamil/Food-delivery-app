@@ -12,8 +12,8 @@ export default function PopularFoods() {
   const { foods, category } = useSelector((state) => state.allFood);
 
   useEffect(() => {
-    dispatch(getAllFood());
-  }, [dispatch]);
+    !foods.length && dispatch(getAllFood());
+  }, [dispatch, foods.length]);
 
   return (
     <Container>

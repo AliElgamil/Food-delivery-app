@@ -1,14 +1,12 @@
 import React from "react";
-import { useState } from "react";
-import { LazyLoadImage } from "react-lazy-load-image-component";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { addToCart } from "../../../store/cartItems";
 import "../../../styles/product-card.css";
+import ImageLoading from "../../ImageLoading";
 
 export default function ProductCards({ item }) {
   const dispatch = useDispatch();
-  const [loadingImage, setLoadingImage] = useState(true);
 
   const addItemToCart = () =>
     dispatch(
@@ -23,15 +21,11 @@ export default function ProductCards({ item }) {
     <div className="product_item text-center">
       <h5 className="product_name mb-5">
         <Link to={`/all-foods/${item.id}`}>
-          <div className={`product_img ${loadingImage ? "loading" : ""}`}>
-            <LazyLoadImage
-              alt={item.category}
-              src={item.image01}
-              afterLoad={() => setLoadingImage(false)}
-              effect="blur"
-              className="img-fluid  mb-4"
-            />
-          </div>
+          <ImageLoading
+            src={item.image01}
+            alt={item.category}
+            addClass={["mb-4"]}
+          />
           {item.title}
         </Link>
       </h5>

@@ -12,15 +12,7 @@ const initialState = {
 };
 
 export const getAllFood = createAsyncThunk("allFood/getAllFood", async () => {
-  const url = "./products.json";
-  const response = await fetch(url);
-  const data = await response.json();
-  console.log(data);
-  return data;
-});
-
-export const getAllFood2 = createAsyncThunk("allFood/getAllFood2", async () => {
-  const url = "../products.json";
+  const url = "/products.json";
   const response = await fetch(url);
   const data = await response.json();
   console.log(data);
@@ -98,19 +90,6 @@ const sliceAllFood = createSlice({
       state.error = true;
     },
     [getAllFood.pending]: (state) => {
-      state.isLoading = true;
-    },
-    [getAllFood2.fulfilled]: (state, action) => {
-      state.isLoading = false;
-      state.allFood = action.payload;
-      state.foods = action.payload;
-      state.allProducts = action.payload;
-    },
-    [getAllFood2.rejected]: (state) => {
-      state.isLoading = false;
-      state.error = true;
-    },
-    [getAllFood2.pending]: (state) => {
       state.isLoading = true;
     },
   },
