@@ -73,14 +73,17 @@ export default function Pagination({ items, pageNumber, setPageNumber }) {
                   ind + 1 >= start() && ind + 1 <= end() ? (
                     pageNumber === ind + 1 ? (
                       <li
-                        key={ind}
+                        key={ind * Math.random()}
                         onClick={() => pageNumberHandler(ind + 1)}
                         className="active"
                       >
                         {ind + 1}
                       </li>
                     ) : (
-                      <li key={ind} onClick={() => pageNumberHandler(ind + 1)}>
+                      <li
+                        key={ind * Math.random()}
+                        onClick={() => pageNumberHandler(ind + 1)}
+                      >
                         {ind + 1}
                       </li>
                       // PagNumbers?.map((item) => item)

@@ -4,16 +4,18 @@ import foodCategoryImg1 from "../../../assets/images/hamburger.png";
 import foodCategoryImg2 from "../../../assets/images/pizza.png";
 import foodCategoryImg3 from "../../../assets/images/bread.png";
 import { useDispatch, useSelector } from "react-redux";
-import { filterFood, getAllFood } from "../../../store/allFood";
+import { filterFood, getData } from "../../../store/allFood";
 import ProductCards from "../ProductCards/ProductCards";
+import GetData from "../../Hooks/GetData";
 
 export default function PopularFoods() {
   const dispatch = useDispatch();
   const { foods, category } = useSelector((state) => state.allFood);
+  const data = GetData();
 
   useEffect(() => {
-    !foods.length && dispatch(getAllFood());
-  }, [dispatch, foods.length]);
+    !foods.length && dispatch(getData(data));
+  }, [dispatch, foods.length, data]);
 
   return (
     <Container>

@@ -2,11 +2,12 @@ import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { Col, Container, Row } from "reactstrap";
-import { getAllFood } from "../../../store/allFood";
+import { getData } from "../../../store/allFood";
 import Search from "./Search";
 import Sort from "./Sort";
 import "../../../styles/all-food.css";
 import Pagination from "../../Pagination/Pagination";
+import GetData from "../../Hooks/GetData";
 
 export default function AllFoodsLayout() {
   const dispatch = useDispatch();
@@ -15,13 +16,15 @@ export default function AllFoodsLayout() {
   const [products, setProducts] = useState([]);
   const [pageNumber, setPageNumber] = useState(1);
 
+  const data = GetData();
+
   useEffect(() => {
     setProducts(allProducts);
   }, [allProducts]);
 
   useEffect(() => {
-    !allProducts.length && dispatch(getAllFood());
-  }, [dispatch, allProducts]);
+    !allProducts.length && dispatch(getData(data));
+  }, [dispatch, allProducts, data]);
 
   return (
     <section>

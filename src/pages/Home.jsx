@@ -13,6 +13,7 @@ import Testimonial from "../components/Ui/Testimonial/Testimonial";
 export default function Home() {
   return (
     <>
+      <Loading show={true} />
       <Helmet title="Home">
         <section>
           <HeroSection />
@@ -42,7 +43,6 @@ export default function Home() {
           <Testimonial />
         </section>
       </Helmet>
-      <Loading show={true} />
     </>
   );
 }
