@@ -23,7 +23,7 @@ export default function HeroSection() {
               <button className="order_button d-flex align-items-center justify-content-between">
                 Order now <i className="ri-arrow-right-s-line"></i>
               </button>
-              <Link to="foods" className="all_foods-btn">
+              <Link to="/all-foods" className="all_foods-btn">
                 See all foods
               </Link>
             </div>

@@ -1,0 +1,54 @@
+.form {
+  color: var(--text-color);
+}
+
+.form .input {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid var(--gray-color);
+  outline: 0;
+  padding: 5px 15px;
+  background-color: transparent;
+  position: relative;
+}
+
+.form .input input {
+  border: none;
+  outline: 0;
+  background-color: transparent;
+  width: 100%;
+}
+
+.form .input span {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  height: 1px;
+  width: 0;
+  background-color: var(--main-color);
+  transition: 0.7s linear;
+}
+
+.form .input input:focus + span {
+  width: 100%;
+}
+
+.form .form_submit {
+  width: fit-content;
+}
+
+.payment_info {
+  background-color: var(--secondary-color);
+  border-radius: 0.5rem;
+  padding: 10px 15px;
+}
+
+.payment_info p {
+  color: var(--text-color);
+  font-size: 1.2rem;
+  margin-top: 0.5rem !important;
+}
+
+.payment_info h4 {
+  color: var(--text-color);
+}

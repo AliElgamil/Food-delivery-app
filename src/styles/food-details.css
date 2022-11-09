@@ -86,6 +86,7 @@
   border-radius: 0.3rem;
   background-color: var(--main-color);
   color: #fff;
+  box-shadow: none !important;
 }
 
 .btn_review:hover {

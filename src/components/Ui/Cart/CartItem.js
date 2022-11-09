@@ -1,4 +1,5 @@
 import React from "react";
+import toast from "react-hot-toast";
 import { useDispatch } from "react-redux";
 import { ListGroupItem } from "reactstrap";
 import {
@@ -10,6 +11,16 @@ import "../../../styles/cart-shopping.css";
 
 export default function CartItem({ item }) {
   const dispatch = useDispatch();
+
+  const removeItemFromCart = () => {
+    dispatch(removeItem(item.id));
+    const option = {
+      duration: 4000,
+      className: "toast_success",
+      position: "top-right",
+    };
+    toast.success("Remove item from cart done🥲", option);
+  };
   return (
     <ListGroupItem className=" cart_item">
       <div className="cart_item-info d-flex gap-3">
@@ -41,10 +52,7 @@ export default function CartItem({ item }) {
               </span>
             </div>
           </div>
-          <button
-            className="delete_btn"
-            onClick={() => dispatch(removeItem(item.id))}
-          >
+          <button className="delete_btn" onClick={() => removeItemFromCart()}>
             <i className="ri-delete-bin-5-line"></i>
           </button>
         </div>

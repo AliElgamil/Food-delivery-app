@@ -3,6 +3,7 @@ import Carts from "../Ui/Cart/carts";
 import Routers from "../../routes/Routers";
 import { useSelector } from "react-redux";
 import Loading from "../Loading/Loading";
+import { Toaster } from "react-hot-toast";
 
 const Header = React.lazy(() => import("../Header/Header"));
 const Footer = React.lazy(() => import("../Footer/Footer"));
@@ -21,6 +22,7 @@ export default function Layout() {
         {cartVisible && <Carts />}
         <Routers />
         <Footer />
+        <Toaster />
       </SuspenseLoading>
     </>
   );

@@ -1,4 +1,5 @@
 import React from "react";
+import toast from "react-hot-toast";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { addToCart } from "../../../store/cartItems";
@@ -8,7 +9,12 @@ import ImageLoading from "../../ImageLoading";
 export default function ProductCards({ item }) {
   const dispatch = useDispatch();
 
-  const addItemToCart = () =>
+  const addItemToCart = () => {
+    const option = {
+      duration: 4000,
+      className: "toast_success",
+      position: "top-right",
+    };
     dispatch(
       addToCart({
         id: item.id,
@@ -17,6 +23,8 @@ export default function ProductCards({ item }) {
         image01: item.image01,
       })
     );
+    toast.success("Add to cart done👍", option);
+  };
   return (
     <div className="product_item text-center">
       <h5 className="product_name mb-5">

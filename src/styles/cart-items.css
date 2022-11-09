@@ -1,0 +1,54 @@
+.bill-container {
+  max-width: 400px;
+  margin: 50px auto;
+  color: var(--text-color);
+}
+
+.bill_item {
+  border-bottom: 1px solid var(--main-color);
+}
+
+.item_info img {
+  max-width: 50px !important;
+}
+
+.item_total-price {
+  font-size: 1.5rem;
+}
+
+.btn_container > a,
+.btn_to {
+  border: 2px solid var(--main-color);
+  background-color: var(--main-color);
+  padding: 8px 15px;
+  border-radius: 0.3rem;
+  color: #fff;
+}
+
+.btn_container > a:hover,
+.btn_to:hover {
+  color: #fff;
+}
+
+.btn_container > a:nth-child(2) {
+  background-color: transparent;
+  color: var(--main-color);
+}
+
+.info_price {
+  font-size: 1rem;
+}
+
+.total_price {
+  color: var(--main-color);
+  font-size: 2rem;
+}
+
+.cart_empty {
+  padding: 50px;
+}
+
+.cart_empty p {
+  color: var(--text-color);
+  font-size: 1.2rem;
+}

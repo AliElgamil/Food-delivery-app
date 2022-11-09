@@ -9,6 +9,8 @@
   --secondary-color: #fde4e4;
   --gray-color: #777;
   --white-color: #fcfcfc;
+  --success-color: #62d346;
+  --error-color: #ff4c4c;
 }
 
 /* reset default style */
@@ -74,6 +76,37 @@ section {
   color: #fff;
 }
 
+.toast_success,
+.toast_error {
+  position: relative;
+  border-radius: 0.3rem;
+}
+
+.toast_success::after,
+.toast_error::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0rem;
+  width: 0;
+  height: 2px;
+  animation: progress-in 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.toast_success {
+  border-left: 2px solid var(--success-color);
+}
+.toast_success::after {
+  background-color: var(--success-color);
+}
+
+.toast_error {
+  border-left: 2px solid var(--error-color);
+}
+.toast_error::after {
+  background-color: var(--error-color);
+}
+
 /* animations  */
 @keyframes move-x {
   0%,
@@ -109,4 +142,15 @@ section {
     transform: rotate(360deg);
   }
 }
+
+@keyframes progress-in {
+  0% {
+    width: 100%;
+  }
+
+  100% {
+    width: 0;
+  }
+}
+
 /* animations  */
