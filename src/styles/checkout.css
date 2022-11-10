@@ -5,7 +5,7 @@
 .form .input {
   width: 100%;
   border: none;
-  border-bottom: 1px solid var(--gray-color);
+  border-bottom: 1px solid var(--secondary-color);
   outline: 0;
   padding: 5px 15px;
   background-color: transparent;
@@ -23,14 +23,15 @@
   position: absolute;
   bottom: -1px;
   left: 0;
-  height: 1px;
-  width: 0;
+  height: 2px;
+  width: 100%;
   background-color: var(--main-color);
-  transition: 0.7s linear;
+  transform: scaleX(0);
+  transition: transform 0.7s linear;
 }
 
 .form .input input:focus + span {
-  width: 100%;
+  transform: scaleX(1);
 }
 
 .form .form_submit {
@@ -51,4 +52,8 @@
 
 .payment_info h4 {
   color: var(--text-color);
+}
+
+.invalid_input {
+  color: var(--error-color);
 }

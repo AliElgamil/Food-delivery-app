@@ -10,17 +10,20 @@ export default function GetData() {
   const [dataProducts, setDataProducts] = useState([]);
 
   useEffect(() => {
-    const snapShoot = (snapshot) => {
-      const res = snapshot.val();
-      if (!res) {
-        dispatch(setData());
-      } else {
-        setDataProducts([...Object.values(res.foods)]);
-      }
+    const subScribe = () => {
+      const snapShoot = (snapshot) => {
+        const res = snapshot.val();
+        if (!res) {
+          dispatch(setData());
+        } else {
+          setDataProducts([...Object.values(res.foods)]);
+        }
+      };
+      onValue(ref(db), snapShoot);
     };
-    onValue(ref(db), snapShoot);
+    subScribe();
 
-    return () => db;
+    console.log(dataProducts);
   }, [dispatch]);
 
   return [...dataProducts];

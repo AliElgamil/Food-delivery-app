@@ -16,10 +16,10 @@ export default function CartItem({ item }) {
     dispatch(removeItem(item.id));
     const option = {
       duration: 4000,
-      className: "toast_success",
+      className: "toast_error",
       position: "top-right",
     };
-    toast.success("Remove item from cart done🥲", option);
+    toast.error("Remove item from cart done🥲", option);
   };
   return (
     <ListGroupItem className=" cart_item">

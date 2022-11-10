@@ -24,7 +24,7 @@ export default function CartItems() {
               autoplay
             ></lottie-player>
             <div className="d-flex align-items-center gap-2">
-              <p className="m-0">Your cart is empty</p>
+              <p className="m-0">Your cart is empty 😑😡</p>
               <Link to="/all-foods" className="btn_to">
                 Go to Shopping
               </Link>

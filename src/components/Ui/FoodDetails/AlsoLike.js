@@ -12,7 +12,7 @@ export default function AlsoLike() {
 
       <Row className="gap_row">
         {alsoLike.map((item) => (
-          <Col key={item.id} xl="3" lg="4" md="6">
+          <Col key={item?.id} xl="3" lg="4" md="6">
             <ProductCards item={item} />
           </Col>
         ))}
