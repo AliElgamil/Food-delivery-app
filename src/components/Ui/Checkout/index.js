@@ -201,7 +201,10 @@ export default function CheckoutLayout() {
         className: "toast_success",
         position: "top-right",
       };
-      toast.success("Thank you for using this app ❤️❤️", option);
+      toast.success(
+        `Thank you ${inputNameEl.current.value}  for using this app ❤️❤️`,
+        option
+      );
     }
   };
   return (

@@ -7,7 +7,7 @@ import Search from "./Search";
 import Sort from "./Sort";
 import "../../../styles/all-food.css";
 import Pagination from "../../Pagination/Pagination";
-import GetData from "../../Hooks/GetData";
+import GetData from "../../../Hooks/GetData";
 
 export default function AllFoodsLayout() {
   const dispatch = useDispatch();

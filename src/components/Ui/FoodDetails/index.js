@@ -2,20 +2,18 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { Container, Row } from "reactstrap";
-import { findFood, getData } from "../../../store/allFood";
+import { findFood, getAllFood } from "../../../store/allFood";
 import Helmet from "../../Helmet/Helmet";
 import CommonSection from "../CommonSection/CommonSection";
 import FoodItem from "./FoodItem";
 import ProductContent from "./ProductContent";
 import "../../../styles/food-details.css";
 import DesAndRev from "./DesAndRev";
-import GetData from "../../Hooks/GetData";
 import AlsoLike from "./AlsoLike";
 
 export default function FoodDetailsLayout() {
   const dispatch = useDispatch();
   const { id } = useParams();
-  const data = GetData();
   const navigate = useNavigate();
 
   const {
@@ -24,12 +22,9 @@ export default function FoodDetailsLayout() {
   } = useSelector((state) => state.allFood);
 
   useEffect(() => {
-    !allFood.length && dispatch(getData(data));
-  }, [dispatch, allFood.length, data]);
-
-  useEffect(() => {
+    !allFood.length && dispatch(getAllFood());
     dispatch(findFood(id));
-  }, [id, dispatch, allFood]);
+  }, [dispatch, allFood.length, id]);
 
   useEffect(() => {
     if (foodItem?.notFound) navigate("/notFounded");

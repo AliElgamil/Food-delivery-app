@@ -52,3 +52,12 @@
   color: var(--text-color);
   font-size: 1.2rem;
 }
+
+.item_delete {
+  font-size: 1.5rem;
+  color: var(--main-color);
+}
+
+.item_delete:hover {
+  color: var(--main-color);
+}

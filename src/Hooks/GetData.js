@@ -2,8 +2,8 @@ import { onValue, ref } from "firebase/database";
 import { useEffect } from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { db } from "../../Firebase";
-import { setData } from "../../store/allFood";
+import { db } from "../Firebase";
+import { setData } from "../store/allFood";
 
 export default function GetData() {
   const dispatch = useDispatch();
@@ -22,8 +22,6 @@ export default function GetData() {
       onValue(ref(db), snapShoot);
     };
     subScribe();
-
-    console.log(dataProducts);
   }, [dispatch]);
 
   return [...dataProducts];

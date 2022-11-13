@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { ref, set, update } from "firebase/database";
 import Fuse from "fuse.js";
 import { db } from "../Firebase";
@@ -12,6 +12,7 @@ const initialState = {
   error: false,
   foodDetail: [],
   alsoLike: [],
+  render: 0,
 };
 
 const getDataLocal = async () => {
@@ -60,9 +61,14 @@ const setDataFirebase = (d) => {
 //   return dataSnapshot;
 // };
 
-// export const getAllFood = createAsyncThunk("allFood/getAllFood", async () => {
-//   return getDataFirebase();
-// });
+export const getAllFood = createAsyncThunk("allFood/getAllFood", async () => {
+  const url =
+    "https://food-delivery-cc883-default-rtdb.firebaseio.com/foods.json";
+  const res = await fetch(url);
+  const data = await res.json();
+
+  return Object.values(data);
+});
 
 const sliceAllFood = createSlice({
   name: "allFood",
@@ -122,6 +128,8 @@ const sliceAllFood = createSlice({
         (item) => item.id === action.payload
       );
 
+      console.log(state.allFood);
+
       if (itemFind.length > 0) {
         const alsoLikeItems = state.allFood.filter(
           (item) =>
@@ -130,13 +138,15 @@ const sliceAllFood = createSlice({
         state.foodDetail = itemFind;
 
         state.alsoLike = alsoLikeItems.slice(0, 4);
-      } else {
+      } else if (state.render !== 0) {
         state.foodDetail = [
           {
             notFound: true,
           },
         ];
       }
+
+      state.render++;
     },
     getData(state, action) {
       state.isLoading = false;
@@ -199,19 +209,19 @@ const sliceAllFood = createSlice({
     },
   },
   extraReducers: {
-    // [getAllFood.fulfilled]: (state, action) => {
-    //   state.isLoading = false;
-    //   state.allFood = action.payload;
-    //   state.foods = action.payload;
-    //   state.allProducts = action.payload;
-    // },
-    // [getAllFood.rejected]: (state) => {
-    //   state.isLoading = false;
-    //   state.error = true;
-    // },
-    // [getAllFood.pending]: (state) => {
-    //   state.isLoading = true;
-    // },
+    [getAllFood.fulfilled]: (state, action) => {
+      state.isLoading = false;
+      state.allFood = action.payload;
+      state.foods = action.payload;
+      state.allProducts = action.payload;
+    },
+    [getAllFood.rejected]: (state) => {
+      state.isLoading = false;
+      state.error = true;
+    },
+    [getAllFood.pending]: (state) => {
+      state.isLoading = true;
+    },
   },
 });
 

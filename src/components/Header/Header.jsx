@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, NavLink } from "react-router-dom";
 import { Container } from "reactstrap";
 import logo from "../../assets/images/res-logo.png";
+import { auth } from "../../Firebase";
 import { toggleCartVisible } from "../../store/UiVisible";
 import "../../styles/header.css";
 const nav_links = [
@@ -20,10 +21,10 @@ const nav_links = [
     display: "cart",
     path: "/cart",
   },
-  {
-    display: "contact",
-    path: "/contact",
-  },
+  // {
+  //   display: "contact",
+  //   path: "/contact",
+  // },
 ];
 
 export default function Header() {
@@ -31,6 +32,8 @@ export default function Header() {
 
   const [showMenu, setShowMenu] = useState(false);
   const [fixedNav, setFixedNav] = useState(false);
+
+  const { user } = useSelector((state) => state.user);
   const { totalQuantity } = useSelector((state) => state.cartItems);
 
   useEffect(() => {
@@ -82,11 +85,24 @@ export default function Header() {
             </span>
 
             {/* ============= User ============= */}
-            <span className="user">
-              <Link to="/login">
-                <i className="ri-user-line"></i>
-              </Link>
-            </span>
+            {user ? (
+              <div className="userInfo position-relative">
+                <img src={user.photoURL} alt="user" />
+                <ul className="drop_down list-unstyled m-0">
+                  <li>{user.displayName}</li>
+                  <li className="logout_btn" onClick={() => auth.signOut()}>
+                    Logout
+                    <i className="ri-door-open-line"></i>
+                  </li>
+                </ul>
+              </div>
+            ) : (
+              <span className="user">
+                <Link to="/login">
+                  <i className="ri-user-line"></i>
+                </Link>
+              </span>
+            )}
 
             {/* ============= Mobile Menu =============*/}
             <span

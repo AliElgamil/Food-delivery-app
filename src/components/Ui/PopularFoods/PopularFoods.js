@@ -6,7 +6,7 @@ import foodCategoryImg3 from "../../../assets/images/bread.png";
 import { useDispatch, useSelector } from "react-redux";
 import { filterFood, getData } from "../../../store/allFood";
 import ProductCards from "../ProductCards/ProductCards";
-import GetData from "../../Hooks/GetData";
+import GetData from "../../../Hooks/GetData";
 
 export default function PopularFoods() {
   const dispatch = useDispatch();

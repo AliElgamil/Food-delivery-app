@@ -52,14 +52,14 @@ export default function Routers() {
           </SuspenseLoading>
         }
       />
-      <Route
+      {/* <Route
         path="/contact"
         element={
           <SuspenseLoading>
             <Contact />
           </SuspenseLoading>
         }
-      />
+      /> */}
       <Route
         path="/all-foods/:id"
         element={

@@ -1,0 +1,50 @@
+.form {
+  max-width: 400px;
+  margin: auto;
+  gap: 1rem;
+  color: var(--text-color);
+}
+
+.form .input {
+  position: relative;
+  border-bottom: 1px solid var(--text-color);
+}
+
+.form .input input {
+  background-color: transparent;
+  border: 0;
+  outline: 0;
+  width: 100%;
+  font-size: 1.1rem;
+  padding: 0.5rem 1rem;
+}
+
+.form .input span {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--main-color);
+  transition: width 300ms linear;
+}
+
+.form .input input:focus + span {
+  width: 100%;
+}
+
+.form p a {
+  color: var(--main-color);
+  font-weight: 600;
+}
+
+.form_submit {
+  align-self: flex-start;
+}
+
+.error_message {
+  color: var(--error-color);
+  padding: 0.3rem 0.8rem;
+  background-color: #ff4c4c3a;
+  border-radius: 0.3rem;
+}
