@@ -8,6 +8,7 @@ import logo from "../../assets/images/res-logo.png";
 import { auth } from "../../Firebase";
 import { toggleCartVisible } from "../../store/UiVisible";
 import "../../styles/header.css";
+import Loading from "../Loading/Loading";
 const nav_links = [
   {
     display: "home",
@@ -51,69 +52,72 @@ export default function Header() {
   };
 
   return (
-    <header className={`header ${fixedNav ? "fixed-top " : ""}`}>
-      <Container>
-        {/* ============= Logo ============= */}
-        <nav className="nav__wrapper d-flex justify-content-between align-items-center">
-          <div className="logo">
-            <img src={logo} alt="logo" />
-            <h5>tasty treat</h5>
-          </div>
-
-          {/* ============= nav_links =============== */}
-          <div
-            className={`navigation ${showMenu ? "show-menu" : ""}`}
-            onClick={showMenuHandler}
-          >
-            <div className="menu d-flex align-items-center gap-5">
-              {nav_links.map((link, ind) => (
-                <NavLink to={link.path} key={ind}>
-                  {link.display}
-                </NavLink>
-              ))}
+    <>
+      <Loading show={true} />
+      <header className={`header ${fixedNav ? "fixed-top " : ""}`}>
+        <Container>
+          {/* ============= Logo ============= */}
+          <nav className="nav__wrapper d-flex justify-content-between align-items-center">
+            <div className="logo">
+              <img src={logo} alt="logo" />
+              <h5>tasty treat</h5>
             </div>
-          </div>
 
-          {/* ============ Right Navbar ============= */}
-          <div className="navbar_right d-flex align-items-center gap-4">
-            {/* ============= Cart icon ============= */}
-            <span className="cart_icon" onClick={toggleCartVisibleHandler}>
-              <i className="ri-shopping-basket-line"></i>
-              {totalQuantity !== 0 && (
-                <span className="cart_badge">{totalQuantity}</span>
-              )}
-            </span>
-
-            {/* ============= User ============= */}
-            {user ? (
-              <div className="userInfo position-relative">
-                <img src={user.photoURL} alt="user" />
-                <ul className="drop_down list-unstyled m-0">
-                  <li>{user.displayName}</li>
-                  <li className="logout_btn" onClick={() => auth.signOut()}>
-                    Logout
-                    <i className="ri-door-open-line"></i>
-                  </li>
-                </ul>
-              </div>
-            ) : (
-              <span className="user">
-                <Link to="/login">
-                  <i className="ri-user-line"></i>
-                </Link>
-              </span>
-            )}
-
-            {/* ============= Mobile Menu =============*/}
-            <span
-              className="mobile_menu d-block d-lg-none"
+            {/* ============= nav_links =============== */}
+            <div
+              className={`navigation ${showMenu ? "show-menu" : ""}`}
               onClick={showMenuHandler}
             >
-              <i className="ri-menu-line"></i>
-            </span>
-          </div>
-        </nav>
-      </Container>
-    </header>
+              <div className="menu d-flex align-items-center gap-5">
+                {nav_links.map((link, ind) => (
+                  <NavLink to={link.path} key={ind}>
+                    {link.display}
+                  </NavLink>
+                ))}
+              </div>
+            </div>
+
+            {/* ============ Right Navbar ============= */}
+            <div className="navbar_right d-flex align-items-center gap-4">
+              {/* ============= Cart icon ============= */}
+              <span className="cart_icon" onClick={toggleCartVisibleHandler}>
+                <i className="ri-shopping-basket-line"></i>
+                {totalQuantity !== 0 && (
+                  <span className="cart_badge">{totalQuantity}</span>
+                )}
+              </span>
+
+              {/* ============= User ============= */}
+              {user ? (
+                <div className="userInfo position-relative">
+                  <img src={user.photoURL} alt="user" />
+                  <ul className="drop_down list-unstyled m-0">
+                    <li>{user.displayName}</li>
+                    <li className="logout_btn" onClick={() => auth.signOut()}>
+                      Logout
+                      <i className="ri-door-open-line"></i>
+                    </li>
+                  </ul>
+                </div>
+              ) : (
+                <span className="user">
+                  <Link to="/login">
+                    <i className="ri-user-line"></i>
+                  </Link>
+                </span>
+              )}
+
+              {/* ============= Mobile Menu =============*/}
+              <span
+                className="mobile_menu d-block d-lg-none"
+                onClick={showMenuHandler}
+              >
+                <i className="ri-menu-line"></i>
+              </span>
+            </div>
+          </nav>
+        </Container>
+      </header>
+    </>
   );
 }
