@@ -10,11 +10,13 @@ import PopularFoods from "../components/Ui/PopularFoods/PopularFoods";
 import WhyTastyTreat from "../components/Ui/WhyTastyTreat/WhyTastyTreat";
 import HotPizza from "../components/Ui/HotPizza/HotPizza";
 import Testimonial from "../components/Ui/Testimonial/Testimonial";
+import { useSelector } from "react-redux";
 export default function Home() {
+  const { lang } = useSelector((state) => state.lang);
   return (
     <>
       <Loading show={true} />
-      <Helmet title="Home">
+      <Helmet title={lang === "en" ? "Home" : "الرئيسية"}>
         <section>
           <HeroSection />
         </section>

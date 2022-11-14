@@ -12,6 +12,7 @@ export default function Carts() {
   const dispatch = useDispatch();
   const { cartItems, totalPrice } = useSelector((state) => state.cartItems);
   const { cartVisible } = useSelector((state) => state.uiVisible);
+  const { lang } = useSelector((state) => state.lang);
   const [showCart, setShowCart] = useState(false);
 
   const toggleCartVisibleHandler = () => {
@@ -31,7 +32,9 @@ export default function Carts() {
       onClick={toggleCartVisibleHandler}
     >
       <ListGroup
-        className={`cart ${showCart ? "show_cart" : ""}`}
+        className={`cart ${showCart ? "show_cart" : ""} ${
+          lang === "en" ? "" : "lang_ar"
+        }`}
         onClick={(e) => e.stopPropagation()}
       >
         <div className="cart_close">
@@ -58,7 +61,7 @@ export default function Carts() {
             className={!cartItems.length ? "disabled" : ""}
             onClick={toggleCartVisibleHandler}
           >
-            <Link to="/checkout">Checkout</Link>
+            <Link to="/checkout">{lang === "en" ? "Checkout" : "الدفع"}</Link>
           </button>
         </div>
       </ListGroup>

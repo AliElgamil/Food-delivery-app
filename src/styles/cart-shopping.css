@@ -18,6 +18,15 @@
 .cart.show_cart {
   transform: translateX(0);
 }
+.cart.lang_ar {
+  right: auto;
+  left: 0;
+  transform: translateX(-100%);
+}
+
+.cart.show_cart {
+  transform: translateX(0);
+}
 
 .cart_item-info .image {
   width: 35px;

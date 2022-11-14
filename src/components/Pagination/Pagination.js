@@ -1,9 +1,11 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { Col, Row } from "reactstrap";
 import ProductCards from "../Ui/ProductCards/ProductCards";
 import "./style.css";
 
 export default function Pagination({ items, pageNumber, setPageNumber }) {
+  const { lang } = useSelector((state) => state.lang);
   const sliceFoodCard = (data) => {
     const pageView = 8;
     const items = [...data];
@@ -61,7 +63,7 @@ export default function Pagination({ items, pageNumber, setPageNumber }) {
           {
             <ul className="pagination_numbers list-unstyled">
               {pageNumber !== 1 && items.length !== 0 ? (
-                <li onClick={prePage}>prev</li>
+                <li onClick={prePage}>{lang === "en" ? "prev" : "السابق"}</li>
               ) : (
                 <li className="hide_btn" onClick={prePage}>
                   prev
@@ -96,7 +98,7 @@ export default function Pagination({ items, pageNumber, setPageNumber }) {
                   next
                 </li>
               ) : (
-                <li onClick={nextPage}>next</li>
+                <li onClick={nextPage}>{lang === "en" ? "next" : "التالي"}</li>
               )}
             </ul>
           }

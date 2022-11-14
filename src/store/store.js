@@ -4,6 +4,7 @@ import sliceAllFood from "./allFood";
 import cartItems from "./cartItems";
 import uiVisible from "./UiVisible";
 import user from "./user";
+import lang from "./lang";
 
 const store = configureStore({
   reducer: {
@@ -11,6 +12,7 @@ const store = configureStore({
     cartItems,
     uiVisible,
     user,
+    lang,
   },
 });
 

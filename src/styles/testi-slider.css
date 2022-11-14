@@ -22,6 +22,14 @@
   border-width: 15px 15px 15px 0;
 }
 
+.reviews_text.text_ar::after {
+  bottom: 0;
+  left: auto;
+  right: 0;
+  transform: translateX(-30px) translateY(100%);
+  border-width: 15px 0px 15px 15px;
+}
+
 .slider_content .slider_image img {
   width: 70px;
   height: 70px;
@@ -34,3 +42,7 @@
 .slick-dots li.slick-active button:before {
   color: var(--main-color);
 }
+
+/* .slick-dots li button:before {
+  color: #dbdbdb;
+} */

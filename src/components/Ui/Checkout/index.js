@@ -7,6 +7,7 @@ import "../../../styles/checkout.css";
 import toast from "react-hot-toast";
 export default function CheckoutLayout() {
   const { totalPrice } = useSelector((state) => state.cartItems);
+  const { lang } = useSelector((state) => state.lang);
   const texShopping = 30;
 
   const inputNameEl = useRef();
@@ -44,7 +45,9 @@ export default function CheckoutLayout() {
       setInputName({
         content: [
           <i className="ri-information-fill"></i>,
-          "Please use the format first name, Last name",
+          lang === "en"
+            ? "Please use the format first name, Last name"
+            : "من فضلك ادخل الاسم الاول و الاخير",
         ],
         validate: false,
       });
@@ -64,7 +67,7 @@ export default function CheckoutLayout() {
       setInputEmail({
         content: [
           <i className="ri-information-fill"></i>,
-          "Your Email is not valid!",
+          lang === "en" ? "Your Email is not valid!" : "الايميل غير صالح!",
         ],
         validate: false,
       });
@@ -79,7 +82,9 @@ export default function CheckoutLayout() {
       setInputPhone({
         content: [
           <i className="ri-information-fill"></i>,
-          "Please insert the correct number should start 010,011,012,015 ",
+          lang === "en"
+            ? "Please insert the correct number should start 010,011,012,015 "
+            : "ادخل رقم موبيل صالح يبدء (010,011,012,015) و مكون من 11 رقم",
         ],
         validate: false,
       });
@@ -94,7 +99,9 @@ export default function CheckoutLayout() {
       setInputCountry({
         content: [
           <i className="ri-information-fill"></i>,
-          "Please insert the correct Country",
+          lang === "en"
+            ? "Please insert the correct Country"
+            : "من فضلك ادخل اسم دولة صالح",
         ],
         validate: false,
       });
@@ -109,7 +116,9 @@ export default function CheckoutLayout() {
       setInputCity({
         content: [
           <i className="ri-information-fill"></i>,
-          "Please insert the correct city",
+          lang === "en"
+            ? "Please insert the correct city"
+            : "من فضلك ادخل اسم مدينة صالح",
         ],
         validate: false,
       });
@@ -124,7 +133,9 @@ export default function CheckoutLayout() {
       setInputPostalCode({
         content: [
           <i className="ri-information-fill"></i>,
-          "Please insert the correct postal code number",
+          lang === "en"
+            ? "Please insert the correct postal code number"
+            : "من فضلك ادخل رقم بريد صالح",
         ],
         validate: false,
       });
@@ -138,7 +149,9 @@ export default function CheckoutLayout() {
       setInputName({
         content: [
           <i className="ri-information-fill"></i>,
-          "Please fill this felid",
+          lang === "en"
+            ? "Please fill this felid"
+            : "من فضلك املأ الحقل الفارغ",
         ],
         validate: false,
       });
@@ -147,7 +160,9 @@ export default function CheckoutLayout() {
       setInputEmail({
         content: [
           <i className="ri-information-fill"></i>,
-          "Please fill this felid",
+          lang === "en"
+            ? "Please fill this felid"
+            : "من فضلك املأ الحقل الفارغ",
         ],
         validate: false,
       });
@@ -156,7 +171,9 @@ export default function CheckoutLayout() {
       setInputPhone({
         content: [
           <i className="ri-information-fill"></i>,
-          "Please fill this felid",
+          lang === "en"
+            ? "Please fill this felid"
+            : "من فضلك املأ الحقل الفارغ",
         ],
         validate: false,
       });
@@ -165,7 +182,9 @@ export default function CheckoutLayout() {
       setInputCountry({
         content: [
           <i className="ri-information-fill"></i>,
-          "Please fill this felid",
+          lang === "en"
+            ? "Please fill this felid"
+            : "من فضلك املأ الحقل الفارغ",
         ],
         validate: false,
       });
@@ -174,7 +193,9 @@ export default function CheckoutLayout() {
       setInputCity({
         content: [
           <i className="ri-information-fill"></i>,
-          "Please fill this felid",
+          lang === "en"
+            ? "Please fill this felid"
+            : "من فضلك املأ الحقل الفارغ",
         ],
         validate: false,
       });
@@ -183,7 +204,9 @@ export default function CheckoutLayout() {
       setInputPostalCode({
         content: [
           <i className="ri-information-fill"></i>,
-          "Please fill this felid",
+          lang === "en"
+            ? "Please fill this felid"
+            : "من فضلك املأ الحقل الفارغ",
         ],
         validate: false,
       });
@@ -202,14 +225,16 @@ export default function CheckoutLayout() {
         position: "top-right",
       };
       toast.success(
-        `Thank you ${inputNameEl.current.value}  for using this app ❤️❤️`,
+        lang === "en"
+          ? `Thank you ${inputNameEl.current.value}  for using this app ❤️❤️`
+          : `شكراٌ لك ${inputNameEl.current.value} لانك استخدامت التطبيق ❤️❤️`,
         option
       );
     }
   };
   return (
-    <Helmet title="checkout">
-      <CommonSection title="Checkout" />
+    <Helmet title={lang === "en" ? "checkout" : "الدفع"}>
+      <CommonSection title={lang === "en" ? "checkout" : "الدفع"} />
       <section>
         <Container>
           <Row>
@@ -218,11 +243,13 @@ export default function CheckoutLayout() {
                 className="form d-flex flex-column gap-3"
                 onSubmit={formSubmitHandler}
               >
-                <h3>Shopping Address</h3>
+                <h3>{lang === "en" ? "Shopping Address" : "بيانات التوصيل"}</h3>
                 <div className="input">
                   <input
                     type="text"
-                    placeholder="Enter Your name"
+                    placeholder={
+                      lang === "en" ? "Enter Your name" : "ادخل اسمك"
+                    }
                     autoComplete="off"
                     onChange={inputNameValid}
                     ref={inputNameEl}
@@ -239,7 +266,9 @@ export default function CheckoutLayout() {
                 <div className="input">
                   <input
                     type="email"
-                    placeholder="Enter Your email"
+                    placeholder={
+                      lang === "en" ? "Enter Your email" : "ادخل ايميلك"
+                    }
                     autoComplete="off"
                     ref={inputEmailEl}
                     onChange={inputEmailValid}
@@ -256,7 +285,7 @@ export default function CheckoutLayout() {
                 <div className="input">
                   <input
                     type="tel"
-                    placeholder="Phone number"
+                    placeholder={lang === "en" ? "Phone number" : "رقم الموبيل"}
                     autoComplete="off"
                     ref={inputPhoneEl}
                     onChange={inputPhoneValid}
@@ -273,7 +302,7 @@ export default function CheckoutLayout() {
                 <div className="input">
                   <input
                     type="text"
-                    placeholder="Country"
+                    placeholder={lang === "en" ? "Country" : "بلدك"}
                     autoComplete="off"
                     ref={inputCountryEl}
                     onChange={inputCountryValid}
@@ -290,7 +319,7 @@ export default function CheckoutLayout() {
                 <div className="input">
                   <input
                     type="text"
-                    placeholder="City"
+                    placeholder={lang === "en" ? "City" : "مدينتك"}
                     autoComplete="off"
                     ref={inputCityEl}
                     onChange={inputCityValid}
@@ -307,7 +336,7 @@ export default function CheckoutLayout() {
                 <div className="input">
                   <input
                     type="tel"
-                    placeholder="Postal code"
+                    placeholder={lang === "en" ? "Postal code" : "رقم البريد"}
                     autoComplete="off"
                     ref={inputPCEl}
                     onChange={inputPostalCodeValid}
@@ -322,7 +351,7 @@ export default function CheckoutLayout() {
                   </p>
                 ) : null}
                 <button className="form_submit add-to-cart">
-                  Finish shopping
+                  {lang === "en" ? "Finish shopping" : "انهاء عملية الشراء"}
                 </button>
               </form>
             </Col>
@@ -330,14 +359,17 @@ export default function CheckoutLayout() {
             <Col md="4">
               <div className="payment_info mt-3 mt-md-0">
                 <p className="d-flex justify-content-between m-0">
-                  subtotal: <span>${totalPrice}</span>
+                  {lang === "en" ? "subtotal" : "المجموع الاولي"}
+                  <span>${totalPrice}</span>
                 </p>
                 <p className="d-flex justify-content-between m-0">
-                  shopping: <span>${texShopping}</span>
+                  {lang === "en" ? "shopping" : "مصاريف اضافية"}
+                  <span>${texShopping}</span>
                 </p>
 
                 <h4 className="d-flex justify-content-between my-4 ">
-                  Total: <span>${totalPrice + texShopping}</span>
+                  {lang === "en" ? "Total" : "المجموع"}
+                  <span>${totalPrice + texShopping}</span>
                 </h4>
               </div>
             </Col>

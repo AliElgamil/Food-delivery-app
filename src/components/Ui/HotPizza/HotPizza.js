@@ -4,8 +4,14 @@ import { useSelector } from "react-redux";
 import { Col, Container, Row } from "reactstrap";
 import ProductCards from "../ProductCards/ProductCards";
 
+const text = {
+  title: "Hot Pizza",
+  titleAr: "بيتزا ساخنة",
+};
+
 export default function HotPizza() {
   const { allFood } = useSelector((state) => state.allFood);
+  const { lang } = useSelector((state) => state.lang);
   const [pizzaHotSlices, setPizzaHotSlices] = useState([]);
 
   useEffect(() => {
@@ -14,7 +20,7 @@ export default function HotPizza() {
   return (
     <Container>
       <div className="section_title text-center">
-        <h2>Hot Pizza</h2>
+        <h2>{lang === "en" ? text.title : text.titleAr}</h2>
       </div>
       <Row>
         {pizzaHotSlices.map(

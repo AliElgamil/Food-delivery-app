@@ -1,5 +1,6 @@
 import React from "react";
 import toast from "react-hot-toast";
+import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { ListGroupItem } from "reactstrap";
 import {
@@ -11,7 +12,7 @@ import "../../../styles/cart-shopping.css";
 
 export default function CartItem({ item }) {
   const dispatch = useDispatch();
-
+  const { lang } = useSelector((state) => state.lang);
   const removeItemFromCart = () => {
     dispatch(removeItem(item.id));
     const option = {
@@ -19,7 +20,10 @@ export default function CartItem({ item }) {
       className: "toast_error",
       position: "top-right",
     };
-    toast.error("Remove item from cart done🥲", option);
+    toast.error(
+      lang === "en" ? "Remove item from cart done🥲" : "تم ازاله بنجاح🥲",
+      option
+    );
   };
   return (
     <ListGroupItem className=" cart_item">
@@ -29,7 +33,9 @@ export default function CartItem({ item }) {
         </div>
         <div className="cart_product-info d-flex gap-5 align-items-center justify-content-between w-100">
           <div>
-            <h6 className="cart_product-name">{item.name}</h6>
+            <h6 className="cart_product-name">
+              {lang === "en" ? item.name : item.nameAr}
+            </h6>
             <p className="d-flex align-align-items-center gap-5 cart_product-price">
               <span>
                 <b>{item.quantity}</b>x ${item.price}

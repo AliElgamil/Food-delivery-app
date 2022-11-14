@@ -36,5 +36,3 @@ npm i
 npm start
 
 ```
-
-#### time 3:36:06

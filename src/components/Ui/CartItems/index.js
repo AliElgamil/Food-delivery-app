@@ -15,6 +15,7 @@ import {
 export default function CartItems() {
   const dispatch = useDispatch();
   const { cartItems, totalPrice } = useSelector((state) => state.cartItems);
+  const { lang } = useSelector((state) => state.lang);
 
   const deleteItem = (i) => {
     dispatch(removeItem(i));
@@ -23,8 +24,8 @@ export default function CartItems() {
   const deCrease = (i) => dispatch(deCreaseItem(i));
 
   return (
-    <Helmet title=" cart">
-      <CommonSection title="Your cart" />
+    <Helmet title={lang === "en" ? "cart" : "العربة"}>
+      <CommonSection title={lang === "en" ? "Your cart" : "العربة"} />
       <Container>
         {!cartItems.length ? (
           <div className="cart_empty d-flex align-items-center justify-content-center">
@@ -37,9 +38,13 @@ export default function CartItems() {
               autoplay
             ></lottie-player>
             <div className="d-flex align-items-center gap-2">
-              <p className="m-0">Your cart is empty 😑😡</p>
+              <p className="m-0">
+                {lang === "en"
+                  ? "Your cart is empty 😑😡"
+                  : "العربة فارغة 😑😡"}
+              </p>
               <Link to="/all-foods" className="btn_to">
-                Go to Shopping
+                {lang === "en" ? "Go to Shopping" : "اذهب للتسوق"}
               </Link>
             </div>
           </div>
@@ -55,7 +60,7 @@ export default function CartItems() {
                     <ImageLoading src={item.image} alt={item.category} />
                   </div>
                   <div className="item_content">
-                    <h6>{item.name}</h6>
+                    <h6>{lang === "en" ? item.name : item.nameAr}</h6>
                     <div className="d-flex align-items-center gap-3">
                       <span>
                         {item.quantity}x {item.price}$
@@ -86,15 +91,19 @@ export default function CartItems() {
 
             <div className="bill_item d-flex align-items-center justify-content-between">
               <p className="m-0 d-flex gap-1 info_price">
-                <i className="ri-information-fill"></i>Taxes and shipping will
-                calculate at checkout
+                <i className="ri-information-fill"></i>
+                {lang === "en"
+                  ? "Taxes and shipping will calculate at checkout"
+                  : "الضرايب و مصاريف الشحن تضاف عند الدفع"}
               </p>
               <span className="total_price">${totalPrice}</span>
             </div>
 
             <div className="btn_container d-flex justify-content-start gap-3">
-              <Link to="/checkout">Checkout</Link>
-              <Link to="/all-foods">Continue Shopping</Link>
+              <Link to="/checkout">{lang === "en" ? "Checkout" : "الدفع"}</Link>
+              <Link to="/all-foods">
+                {lang === "en" ? "Continue Shopping" : "تابع التسوق"}
+              </Link>
             </div>
           </div>
         )}

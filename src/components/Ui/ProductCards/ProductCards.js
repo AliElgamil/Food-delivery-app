@@ -1,13 +1,18 @@
 import React from "react";
 import toast from "react-hot-toast";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { addToCart } from "../../../store/cartItems";
 import "../../../styles/product-card.css";
 import ImageLoading from "../../ImageLoading";
+const text = {
+  button: "Add to cart",
+  buttonAr: "اضف الي العربة",
+};
 
 export default function ProductCards({ item }) {
   const dispatch = useDispatch();
+  const { lang } = useSelector((state) => state.lang);
 
   const addItemToCart = () => {
     const option = {
@@ -19,11 +24,15 @@ export default function ProductCards({ item }) {
       addToCart({
         id: item.id,
         name: item.title,
+        nameAr: item.titleAr,
         price: item.price,
         image01: item.image01,
       })
     );
-    toast.success("Add to cart done👍", option);
+    toast.success(
+      lang === "en" ? "Add to cart done👍" : "تم الاضافة بنجاح👍",
+      option
+    );
   };
   return (
     <div className="product_item text-center">
@@ -31,17 +40,17 @@ export default function ProductCards({ item }) {
         <Link to={`/all-foods/${item.id}`}>
           <ImageLoading
             src={item.image01}
-            alt={item.category}
+            alt={lang === "en" ? item.title : item.titleAr}
             addClass={["mb-4"]}
           />
-          {item.title}
+          {lang === "en" ? item.title : item.titleAr}
         </Link>
       </h5>
       <div className="product_content">
         <div className="d-flex align-items-center justify-content-between">
           <span className="product_price">${item.price}</span>
           <button className="add-to-cart rounded-3" onClick={addItemToCart}>
-            Add to cart
+            {lang === "en" ? text.button : text.buttonAr}
           </button>
         </div>
       </div>

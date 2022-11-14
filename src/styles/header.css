@@ -191,3 +191,11 @@
   translate: 0 100%;
   opacity: 1;
 }
+
+.lang_icon {
+  padding: 0.3rem 0.6rem;
+  border-radius: 0.3rem;
+  background: var(--main-color);
+  color: #fff;
+  cursor: pointer;
+}

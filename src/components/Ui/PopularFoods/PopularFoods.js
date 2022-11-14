@@ -8,9 +8,22 @@ import { filterFood, getData } from "../../../store/allFood";
 import ProductCards from "../ProductCards/ProductCards";
 import GetData from "../../../Hooks/GetData";
 
+const text = {
+  title: "Popular Foods",
+  titleAr: "الاطعمة المميزة",
+  category1: "All",
+  category2: "Burger",
+  category3: "Pizza",
+  category4: "Bread",
+  categoryAr1: "الكل",
+  categoryAr2: "برجر",
+  categoryAr3: "بيتزا",
+  categoryAr4: "خبز",
+};
 export default function PopularFoods() {
   const dispatch = useDispatch();
   const { foods, category } = useSelector((state) => state.allFood);
+  const { lang } = useSelector((state) => state.lang);
   const data = GetData();
 
   useEffect(() => {
@@ -21,7 +34,9 @@ export default function PopularFoods() {
     <Container>
       <Row>
         <Col sm="12">
-          <h2 className="text-center">Popular Foods</h2>
+          <h2 className="text-center">
+            {lang === "en" ? text.title : text.titleAr}
+          </h2>
         </Col>
 
         <Col sm="12">
@@ -30,7 +45,7 @@ export default function PopularFoods() {
               className={`btn ${category === "all" ? "active" : ""}`}
               onClick={() => dispatch(filterFood("all"))}
             >
-              All
+              {lang === "en" ? text.category1 : text.categoryAr1}
             </button>
             <button
               className={`btn d-flex align-items-center gap-2 ${
@@ -39,7 +54,7 @@ export default function PopularFoods() {
               onClick={() => dispatch(filterFood("Burger"))}
             >
               <img src={foodCategoryImg1} alt="food_category" />
-              Burger
+              {lang === "en" ? text.category2 : text.categoryAr2}
             </button>
             <button
               className={`btn d-flex align-items-center gap-2 ${
@@ -48,7 +63,7 @@ export default function PopularFoods() {
               onClick={() => dispatch(filterFood("Pizza"))}
             >
               <img src={foodCategoryImg2} alt="food_category" />
-              Pizza
+              {lang === "en" ? text.category3 : text.categoryAr3}
             </button>
             <button
               className={`btn d-flex align-items-center gap-2 ${
@@ -57,7 +72,7 @@ export default function PopularFoods() {
               onClick={() => dispatch(filterFood("Bread"))}
             >
               <img src={foodCategoryImg3} alt="food_category" />
-              Bread
+              {lang === "en" ? text.category4 : text.categoryAr4}
             </button>
           </div>
         </Col>

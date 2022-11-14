@@ -52,6 +52,7 @@ a:hover {
   text-decoration: none;
   color: unset;
   color: inherit;
+  outline: 0 !important;
 }
 
 h1,
