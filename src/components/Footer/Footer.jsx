@@ -107,9 +107,7 @@ export default function Footer() {
                 <input
                   type="text"
                   placeholder={
-                    lang === "eng"
-                      ? "Enter your email"
-                      : "ادخل الايميل الخاص بك"
+                    lang === "en" ? "Enter your email" : "ادخل الايميل الخاص بك"
                   }
                 />
                 <button>
