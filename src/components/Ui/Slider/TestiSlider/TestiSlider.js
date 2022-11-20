@@ -52,7 +52,6 @@ export default function TestiSlider({ lang }) {
     slidesToScroll: 1,
   };
 
-  console.log(lang);
   return (
     <Slider {...settings} currentSlide={0} rtl={true}>
       {sliderItems.map((item, ind) => (

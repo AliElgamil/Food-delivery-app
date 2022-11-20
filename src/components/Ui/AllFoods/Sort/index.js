@@ -24,7 +24,6 @@ export default function Sort() {
   const selectRef = useRef();
   const { lang } = useSelector((state) => state.lang);
   const sortFoodsHandler = () => {
-    console.log(selectRef.current.value);
     dispatch(sortFoods(selectRef.current.value));
   };
   return (

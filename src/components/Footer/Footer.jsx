@@ -99,7 +99,6 @@ export default function Footer() {
             </Col>
             <Col lg="3" md="4" sm="6">
               <h5 className="delivery_title">
-                {" "}
                 {lang === "en" ? text.title.t3 : text.titleAr.t3}
               </h5>
               <p>{lang === "en" ? text.newsletter : text.newsletterAr}</p>
