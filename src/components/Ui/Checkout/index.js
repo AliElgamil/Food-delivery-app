@@ -56,7 +56,7 @@ export default function CheckoutLayout() {
 
   const inputEmailValid = () => {
     if (
-      /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(
+      /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(
         `${inputEmailEl.current.value}`
       )
     ) {

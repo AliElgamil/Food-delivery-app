@@ -113,7 +113,7 @@ const sliceAllFood = createSlice({
     },
     searchFoods(state, action) {
       const fuse = new Fuse(state.allProducts, {
-        keys: ["descAr", "desc", "category", "title"],
+        keys: ["descAr", "desc", "category", "categoryAr", "titleAr", "title"],
       });
 
       const result = fuse.search(action.payload).map(({ item }) => item);

@@ -6,7 +6,6 @@ const Home = React.lazy(() => import("../pages/Home"));
 const AllFoods = React.lazy(() => import("../pages/AllFoods"));
 const Cart = React.lazy(() => import("../pages/Cart"));
 const Checkout = React.lazy(() => import("../pages/Checkout"));
-const Contact = React.lazy(() => import("../pages/Contact"));
 const FoodDetails = React.lazy(() => import("../pages/FoodDetails"));
 const Login = React.lazy(() => import("../pages/Login"));
 const Register = React.lazy(() => import("../pages/Register"));
@@ -52,14 +51,7 @@ export default function Routers() {
           </SuspenseLoading>
         }
       />
-      {/* <Route
-        path="/contact"
-        element={
-          <SuspenseLoading>
-            <Contact />
-          </SuspenseLoading>
-        }
-      /> */}
+
       <Route
         path="/all-foods/:id"
         element={
