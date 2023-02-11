@@ -65,13 +65,19 @@ export default function CartItems() {
                       <span>
                         {item.quantity}x {item.price}$
                       </span>
-                      <div class="d-flex align-items-center justify-content-between  gap-3 inc_dec-btn">
-                        <span class="inc-btn" onClick={() => inCrease(item.id)}>
-                          <i class="ri-add-line"></i>
+                      <div className="d-flex align-items-center justify-content-between  gap-3 inc_dec-btn">
+                        <span
+                          className="inc-btn"
+                          onClick={() => inCrease(item.id)}
+                        >
+                          <i className="ri-add-line"></i>
                         </span>
-                        <span class="quantity">1</span>
-                        <span class="dec-btn" onClick={() => deCrease(item.id)}>
-                          <i class="ri-subtract-line"></i>
+                        <span className="quantity">1</span>
+                        <span
+                          className="dec-btn"
+                          onClick={() => deCrease(item.id)}
+                        >
+                          <i className="ri-subtract-line"></i>
                         </span>
                       </div>
                     </div>

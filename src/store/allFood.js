@@ -121,7 +121,7 @@ const sliceAllFood = createSlice({
       state.searchProducts = result;
     },
     resetSearch(state) {
-      state.searchProducts = false;
+      state.searchProducts = state.allProducts;
     },
     findFood(state, action) {
       const itemFind = state.allFood.filter(
